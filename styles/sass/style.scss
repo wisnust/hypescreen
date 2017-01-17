@@ -144,8 +144,33 @@ a {
 	 		}
 	 	}
  	}
-	@media (max-width: $screen-xs-min) {
-		background: gold;
+	@media (max-width: $screen-sm-max) {
+		position: static;
+		height: 100%;
+		.navbar-header {
+			.navbar-brand {
+				float: none;
+			    display: block;
+			    text-align: center;
+			    padding: 20px 0px;
+			    > img {
+			    	margin: 0 auto;
+			    }
+			}
+		}
+ 		.navbar-nav {
+ 			background-color: $c-blue;
+ 			margin: 0px;
+ 			width: 100%;
+			@include position(absolute, $top: 0px, $left: 0px, $right: 0px); 
+			@include transition(all .3s);
+			@include transform(translateX(-1000px));
+			z-index: 55; 
+
+			> li {
+					background-color: $c-blue;
+			}
+ 		}
 	}
 }
 
@@ -166,7 +191,7 @@ a {
 	}
 	nav {
 		background-color: #f0f0f0;
-		@include position(absolute, $top: 75px, $bottom: 0px, $left: 0px); 
+		@include position(absolute, $top: 0px, $bottom: 0px, $left: 0px); 
 		padding: 0px 40px;
 		width: 330px;
 		height: 100%;
@@ -267,42 +292,60 @@ a {
 		}
 	}
 
-	@media (max-width: $screen-xs-max) {
+	@media (max-width: $screen-sm-max) {
 		.nav-mobile { 
 			display: block;
-		    position: absolute;
-		    right: 20px;
-		    top: 100px;
+			@include position(absolute, $top: 0px, $left: 0px);
 		    z-index: 30;
 
 		    > a { 
+		    	display: block;
 		    	text-decoration: none;
-	    		font-size: 20px;
-	    		color: #212121;
+	    		color: $c-white;
+				padding: 30px 20px;
+	    		> i {
+	    			font-size: 36px;
+	    			color: $c-white;
+	    		}
 		    }
 		}
-		#nav-backdrop {
-			display: none;
-			width: 100%;
-			height: 100%;
-			z-index: 20;
-			background-color: rgba(#000, .5);
-			position: fixed;
-			top:0px;
-			left: 0px;
-			right: 0px;
-			bottom: 0px;
-		}
+		// #nav-backdrop {
+		// 	display: none;
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	z-index: 20;
+		// 	background-color: rgba(#000, .5);
+		// 	position: fixed;
+		// 	top:0px;
+		// 	left: 0px;
+		// 	right: 0px;
+		// 	bottom: 0px;
+		// }
 		nav {
+			width: 100%;
+			height: auto;
+			bottom: inherit;
+			@include box-shadow(0px 2px 6px rgba($c-black, .15));
 			@include transition(all .3s);
-			@include transform(translateX(-300px));
+			@include transform(translateX(-1000px));
+			.list-menu {
+				margin-bottom: 0px;
+				border: 0px;
+			}
+			.top-shows {
+				display: none;
+			} 
 		}
-		nav.normal {
-			@include transform(translateX(0px));
+	}
+	@media (min-width: $screen-sm-max) {
+		 nav {
+			top: 75px !important;
 		}
 	}
 }
-
+.nav-open {
+	@include transform(translateX(0px) !important);
+}
 // =============================================================================
 //
 // Home
