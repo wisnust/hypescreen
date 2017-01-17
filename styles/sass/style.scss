@@ -1,0 +1,423 @@
+@charset "UTF-8";
+@import "bootstrap";
+@import "mixins";
+@import "variables";
+@import "functions";
+
+// =============================================================================
+//
+// Global
+//
+// =============================================================================
+
+body {
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}   
+
+a {
+	color: $c-blue;
+}
+// -------------------------
+// Global / Button
+// ------------------------- 
+   
+// -------------------------
+// Prefix
+// ------------------------- 
+  
+// -------------------------
+// Typography
+// ------------------------- 
+
+// -------------------------
+// Section
+// -------------------------  
+ 
+// -------------------------
+// Colour
+// -------------------------  
+  
+// =============================================================================
+//
+// Header / Navbar
+//
+// =============================================================================
+ 
+.navbar-hypescreen {
+	background-color: $c-blue;
+ 	border: 0px;
+ 	border-radius: 0px;
+ 	.navbar-header {
+ 		.navbar-brand {
+ 			height: 100%;
+ 			padding: 10px 0px 0px 40px;
+ 			> img {
+ 				width: 185px;
+ 			}
+ 		}
+ 	}
+ 	.navbar-nav {
+ 		text-transform: uppercase;
+	 	> li {
+	 		> a {
+	 			color: $c-white;
+	 			font-size: 16px;
+	 			padding: 26px 17px;
+	 			@include transition(background-color .3s);
+	 			&:hover, &:focus {
+	 				background-color: rgba($c-white, .1);
+	 			}
+	 			> i {
+	 				font-size: 21px;
+	 			}
+	 		}
+	 		&.user-login {
+	 			background-color: rgba($c-white, .2);
+	 			> a {
+	 				padding: 15px 17px;
+
+		 			.user-img {
+					    border-radius: 50%;
+					    height: 45px;
+					    width: 45px;
+					    object-fit: cover;
+		 			}
+	 			}
+	 			.dropdown-menu {
+	 				border: 0;
+	 				border-radius: 0px;
+	 				@include box-shadow(0px 2px 5px rgba(17, 47, 74, 0.3));
+	 				padding: 15px 0px; 
+		 			> li {
+			 			> a {
+			 				padding: 10px 25px;
+			 				font-size: 13px;
+			 				text-transform: none;
+			 			}
+		 			}
+	 			}
+	 		}
+	 	}
+	 	.form-search {
+	 		padding: 11px;
+	 		position: relative;
+	 		.form-control {
+	 			background-color: transparent;
+			    color: $c-white;
+			    border-color: $c-white;
+			    font-size: 16px;
+			    height: 36px;
+    			padding: 15px 20px;
+    			transition: all .3s;
+    			width: 210px;
+			    &::-webkit-input-placeholder {
+				 	color: $c-white;
+			    	text-transform: uppercase;
+				}
+				&::-moz-placeholder {
+				 	color: $c-white;
+			    	text-transform: uppercase;
+				}
+				&:-ms-input-placeholder {
+				 	color: $c-white;
+			    	text-transform: uppercase;
+				}
+				&:-moz-placeholder {
+				 	color: $c-white;
+			    	text-transform: uppercase;
+				}
+				&:focus {
+					width: 230px;
+					@include box-shadow(inset 2px 2px 4px rgba($c-black, .1));
+				}
+	 		}
+	 		.btn-submit {
+	 			@include position(absolute, $top: 15px, $right: 20px); 
+			    background-color: transparent;
+			    color: $c-white;
+			    padding: 0px 6px;
+			    > i {
+			    	font-size: 21px;
+			    }
+	 		}
+	 	}
+ 	}
+	@media (max-width: $screen-xs-min) {
+		background: gold;
+	}
+}
+
+// -------------------------
+// Sidenav
+// -------------------------  
+.sidenav {
+	&:before {
+		content: " ";
+		background-color: #f0f0f0;
+		display: block;
+		width: 330px; 
+		@include position(fixed, $top: 0px, $right: 0px, $bottom: 0px, $left: 0px); 
+		z-index: -1;
+	}
+	.nav-mobile {
+		display: none;
+	}
+	nav {
+		background-color: #f0f0f0;
+		@include position(absolute, $top: 75px, $bottom: 0px, $left: 0px); 
+		padding: 0px 40px;
+		width: 330px;
+		height: 100%;
+		z-index: 55; 
+		.list-menu { 
+		    border-bottom: 1px solid #bdbdbd;
+		    list-style: none;
+		    margin-bottom: 50px;
+		    padding: 30px 0px;
+		    > li {
+			    a {
+			    	display: block;
+				    text-decoration: none;
+				    color: #8a99aa;
+				    text-transform: uppercase;
+				    font-size: 16px;
+				    font-weight: 700;
+			    	padding: 10px 0px;
+				    position: relative;
+				    @include transition(color .3s);
+			    	&:after {
+			    		content: " ";
+			    		display: block;
+			    		background-color: $c-blue;
+			    		height: 2.5px;
+			    		width: 0px;
+			    		@include position(absolute, $bottom: 0px, $left: 0px);
+				    	@include transition(width .3s);
+			    	}
+			    	&:hover, &:focus {
+			    		color: $c-blue;
+			    		&:after {
+			    			width: 26px;
+			    		}
+			    	}
+			    } 
+		    }
+		}
+		.top-shows {
+			> h2 {
+				font-size: 16px;
+				font-weight: 700;
+				color: #8a99aa;
+				margin-bottom: 13px;
+				text-transform: uppercase;
+			}
+			> ul { 
+				padding: 0px;
+				list-style: none;
+				@include make-row;
+				margin-left: -10px;
+				margin-right: -10px;
+				margin-bottom: 0px;
+				> li {
+					@include make-xs-column(6); 
+					padding-right: 10px;
+					padding-left: 10px;
+					margin-bottom: 10px;
+					> a {
+						border-radius: 2px;
+						overflow: hidden;
+						display: inline-block;
+						position: relative;
+						> img {
+							width: 100%;
+							height: 67px;
+							object-fit: cover;
+						}
+						&:before {
+							content: " ";
+							background-color: $c-black;
+							display: block;
+							width: 100%;
+							height: 100%;
+			    			@include position(absolute, $top: 0px, $right: 0px, $bottom: 0px, $left: 0px);
+			    			z-index: 3;
+			    			opacity: 0;
+			    			@include transition(opacity .3s);
+						}
+						&:hover {
+							&:before {
+								opacity: .2
+							}
+						}
+					}
+				}
+			}
+			.action {
+				display: block;
+			    text-align: right;
+			    font-size: 13px;
+			    color: #424242;
+			    > i {
+			    	margin-left: 5px;
+			    	color: $c-blue;
+			    }
+			}
+		}
+	}
+
+	@media (max-width: $screen-xs-max) {
+		.nav-mobile { 
+			display: block;
+		    position: absolute;
+		    right: 20px;
+		    top: 100px;
+		    z-index: 30;
+
+		    > a { 
+		    	text-decoration: none;
+	    		font-size: 20px;
+	    		color: #212121;
+		    }
+		}
+		#nav-backdrop {
+			display: none;
+			width: 100%;
+			height: 100%;
+			z-index: 20;
+			background-color: rgba(#000, .5);
+			position: fixed;
+			top:0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+		}
+		nav {
+			@include transition(all .3s);
+			@include transform(translateX(-300px));
+		}
+		nav.normal {
+			@include transform(translateX(0px));
+		}
+	}
+}
+
+// =============================================================================
+//
+// Home
+//
+// =============================================================================
+
+// -------------------------
+// Home / work
+// -------------------------
+  
+// =============================================================================
+//
+// Footer
+//
+// =============================================================================
+
+// =============================================================================
+//
+// Style Guide
+//
+// =============================================================================
+   
+// =============================================================================
+//
+// Responsive
+//
+// =============================================================================
+
+// -------------------------
+// DESKTOP / 1200px >
+// -------------------------
+       
+@media (min-width: 1200px) {  
+}
+
+// -------------------------
+// DESKTOP / 1500px >
+// -------------------------
+       
+@media (min-width: 1500px) { 
+}
+
+// -------------------------
+// DESKTOP / 1900px >
+// -------------------------
+
+@media (min-width: 1900px) { 
+}
+
+// -------------------------
+// DESKTOP / 2300 >
+// ------------------------- 
+
+@media (min-width: 2300px) { 
+}
+
+// -------------------------
+// DESKTOP / 994px >
+// -------------------------  
+
+@media (min-width: 994px) {  
+}
+
+// -------------------------
+// TABLET / LANDSCAPE
+// -------------------------  
+ 
+@media (min-width: 992px) and (max-width: 1197px) { 
+}
+
+// -------------------------
+// TABLET / LANDSCAPE ONLY
+// -------------------------  
+  
+@media (min-width: 1024px) and (max-width: 1024px) { 
+}
+
+// -------------------------
+// TABLET / PORTRAIT AND LANDSCAPE
+// -------------------------  
+
+@media (min-width: 669px) and (max-width: 1020px) { 
+}
+
+// -------------------------
+// TABLET / PHONE < 992px
+// -------------------------   
+
+@media (max-width: 992px) {  
+}  
+// -------------------------
+// TABLET / PORTRAIT ONLY
+// -------------------------  
+
+@media (min-width: 760px) and (max-width: 997px) {   
+}
+
+// -------------------------
+// PHONE / LANDSCAPE
+// -------------------------   
+
+@media (min-width: 550px) and (max-width: 757px) { 
+}
+
+// -------------------------
+// PHONE < 667px
+// -------------------------   
+
+@media (max-width: 667px) {  
+}
+
+// -------------------------
+// PHONE < 367px
+// -------------------------   
+
+@media (max-width: 367px) { 
+ 
+}
