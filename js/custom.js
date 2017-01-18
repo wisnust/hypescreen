@@ -7,19 +7,24 @@ $(document).ready(function() {
         $logoHeight = $('.navbar-hypescreen').height(),
         $topNav_height = $topNav.height();
 
-    $topNav.css('top', $logoHeight);
-    $sideNav.css('top', $topNav_height + $logoHeight);
+        $('#show-sidenav').click(function(event) {
+            $topNav.add($sideNav).toggleClass('nav-open')
+            $(this).toggleClass('active');
+            // $('#nav-backdrop').fadeToggle(400);
+        });
+          
+    $(window).on("resize", function() {
 
+        $topNav.css('top', $logoHeight);
+        $sideNav.css('top', $topNav_height + $logoHeight + 60);
 
-    $('#show-nav-sg').click(function(event) {
-        $topNav.add($sideNav).toggleClass('nav-open');
-        // $('#nav-backdrop').fadeToggle(400);
     });
+    
+     $(window).trigger("resize");  
 
     // $('#nav-backdrop').click(function(event) {
     //     $topNav.add($sideNav).toggleClass('nav-open');
     //     $(this).fadeToggle(400);
     // }); 
-
 
 });

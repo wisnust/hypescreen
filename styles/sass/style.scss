@@ -19,6 +19,7 @@ body {
 a {
 	color: $c-blue;
 }
+
 // -------------------------
 // Global / Button
 // ------------------------- 
@@ -49,12 +50,14 @@ a {
 	background-color: $c-blue;
  	border: 0px;
  	border-radius: 0px;
+ 	height: 75px;
+	@include position(fixed, $top: 0px, $right: 0px, $left: 0px); 
  	.navbar-header {
  		.navbar-brand {
  			height: 100%;
- 			padding: 10px 0px 0px 40px;
+ 			padding: 13px 0px 0px 40px;
  			> img {
- 				width: 185px;
+ 				width: 181px;
  			}
  		}
  	}
@@ -64,36 +67,40 @@ a {
 	 		> a {
 	 			color: $c-white;
 	 			font-size: 16px;
-	 			padding: 26px 17px;
+	 			padding: 28px 17px;
+				letter-spacing: -0.04px;
 	 			@include transition(background-color .3s);
 	 			&:hover, &:focus {
 	 				background-color: rgba($c-white, .1);
 	 			}
 	 			> i {
-	 				font-size: 21px;
+	 				font-size: 20px;
+	 				font-weight: 700;
 	 			}
 	 		}
 	 		&.user-login {
 	 			background-color: rgba($c-white, .2);
 	 			> a {
-	 				padding: 15px 17px;
+	 				padding: 14px 19px;
 
 		 			.user-img {
 					    border-radius: 50%;
-					    height: 45px;
-					    width: 45px;
+					    height: 47px;
+					    width: 47px;
 					    object-fit: cover;
 		 			}
 	 			}
 	 			.dropdown-menu {
 	 				border: 0;
 	 				border-radius: 0px;
-	 				@include box-shadow(0px 2px 5px rgba(17, 47, 74, 0.3));
+	 				@include box-shadow(0 0 2px 0 rgba(20,60,96,0.12), 
+	 									0 2px 4px 0 rgba(20,60,96,0.24)); 
 	 				padding: 15px 0px; 
 		 			> li {
 			 			> a {
+			 				color: #3F5768;
 			 				padding: 10px 25px;
-			 				font-size: 13px;
+			 				font-size: 14px;
 			 				text-transform: none;
 			 			}
 		 			}
@@ -111,7 +118,7 @@ a {
 			    height: 36px;
     			padding: 15px 20px;
     			transition: all .3s;
-    			width: 210px;
+    			width: 237px;
 			    &::-webkit-input-placeholder {
 				 	color: $c-white;
 			    	text-transform: uppercase;
@@ -129,31 +136,33 @@ a {
 			    	text-transform: uppercase;
 				}
 				&:focus {
-					width: 230px;
+					width: 257px;
 					@include box-shadow(inset 2px 2px 4px rgba($c-black, .1));
 				}
 	 		}
 	 		.btn-submit {
-	 			@include position(absolute, $top: 15px, $right: 20px); 
+	 			@include position(absolute, $top: 12px, $right: 12px); 
 			    background-color: transparent;
 			    color: $c-white;
-			    padding: 0px 6px;
+			    padding: 5px 10px;
 			    > i {
-			    	font-size: 21px;
+			    	font-size: 20px;
 			    }
 	 		}
 	 	}
  	}
 	@media (max-width: $screen-sm-max) {
-		position: static;
-		height: 100%;
+		position: fixed;
+		height: auto;
 		.navbar-header {
+			float: none;
 			.navbar-brand {
 				float: none;
 			    display: block;
 			    text-align: center;
 			    padding: 20px 0px;
 			    > img {
+			    	width: 150px;
 			    	margin: 0 auto;
 			    }
 			}
@@ -164,11 +173,87 @@ a {
  			width: 100%;
 			@include position(absolute, $top: 0px, $left: 0px, $right: 0px); 
 			@include transition(all .3s);
+			padding: 55px 40px;
 			@include transform(translateX(-1000px));
 			z-index: 55; 
 
 			> li {
-					background-color: $c-blue;
+				background-color: $c-blue;
+				text-align: center;
+				float: none;
+				> a {
+					&:hover, &:focus {
+						background-color: transparent;
+						color: rgba($c-white, .8);
+					}
+				}
+				&:nth-child(1) {
+					> a {
+						padding: 23px 17px;
+					}
+				}
+				&:nth-child(3), &:nth-child(4) {
+					display: none;
+				}
+				&.user-login {
+					background-color: transparent;
+					display: table;
+					width: 100%;
+					border-top: 1px solid $c-white;
+					> a {
+						display: table-cell;
+					    vertical-align: middle;
+					    position: relative;
+					    text-align: right;
+					    width: 50%;
+						.user-img {
+							width: 70px;
+							height: 70px;
+							position: relative;
+							left: 20px;
+						}
+					}
+					.dropdown-menu {
+						display: table-cell;
+						vertical-align: middle;
+						position: relative;
+						background-color: transparent;
+						box-shadow: 0px 0px 0px transparent;
+						> li {
+							> a {
+								color: $c-white;
+								font-size: 16px;
+								&:hover, &:focus {
+									color: rgba($c-white, .8);
+									background-color: transparent;
+								}
+							}
+						}
+					}
+				}
+			}
+			.form-search {
+				position: fixed;
+			    z-index: 55;
+			    top: 0px;
+			    left: 0px;
+			    right: 0px;
+			    box-shadow: 0px 0px transparent;
+			    margin: 0px auto;
+			    padding: 11px 40px;
+			    .form-group {
+			    	position: relative;
+			    	.form-control {
+			    		width: 100%;
+			    		&:focus {
+			    			width: 100%;
+			    		}
+			    	}
+			    	.btn-submit {
+			    		top: 0px;
+			    		right: 0px;
+			    	}
+			    }
 			}
  		}
 	}
@@ -176,13 +261,17 @@ a {
 
 // -------------------------
 // Sidenav
-// -------------------------  
+// ------------------------- 
+
+.social-link path {
+	fill: black;
+}
 .sidenav {
 	&:before {
 		content: " ";
 		background-color: #f0f0f0;
 		display: block;
-		width: 330px; 
+		width: 335px; 
 		@include position(fixed, $top: 0px, $right: 0px, $bottom: 0px, $left: 0px); 
 		z-index: -1;
 	}
@@ -191,9 +280,9 @@ a {
 	}
 	nav {
 		background-color: #f0f0f0;
-		@include position(absolute, $top: 0px, $bottom: 0px, $left: 0px); 
+		@include position(fixed, $top: 0px, $bottom: 0px, $left: 0px); 
 		padding: 0px 40px;
-		width: 330px;
+		width: 335px;
 		height: 100%;
 		z-index: 55; 
 		.list-menu { 
@@ -205,36 +294,75 @@ a {
 			    a {
 			    	display: block;
 				    text-decoration: none;
-				    color: #8a99aa;
+				    color: #8999AB;
 				    text-transform: uppercase;
 				    font-size: 16px;
 				    font-weight: 700;
-			    	padding: 10px 0px;
+			    	padding: 10px 10px 10px 34px;
 				    position: relative;
 				    @include transition(color .3s);
+				    img {
+			    		@include position(absolute, $top: 10px, $left: 0px);
+			    		@include transition(opacity .1s);
+				    }
+		    		img.is-visible {
+		    			opacity: 1; 
+		    			z-index: 3;
+		    		}
+		    		img.is-hidden {
+		    			opacity: 1;
+		    			z-index: 2;
+		    		}
 			    	&:after {
 			    		content: " ";
 			    		display: block;
 			    		background-color: $c-blue;
 			    		height: 2.5px;
 			    		width: 0px;
-			    		@include position(absolute, $bottom: 0px, $left: 0px);
+			    		@include position(absolute, $bottom: 0px, $left: 34px);
 				    	@include transition(width .3s);
 			    	}
 			    	&:hover, &:focus {
+			    		color: $c-blue;
+			    		img.is-visible {
+			    			opacity: 0;
+			    		}
+			    		img.is-hidden {
+			    			opacity: 1;
+			    		}
+			    		&:after {
+			    			width: 26px;
+			    		}
+			    	}
+			    }
+			    &:first-of-type {
+			    	a {
+			    		img {
+			    			left: -4px;
+			    		}
+			    	}
+			    } 
+			    &.active {
+			    	a {
 			    		color: $c-blue;
 			    		&:after {
 			    			width: 26px;
 			    		}
 			    	}
-			    } 
+		    		img.is-visible {
+		    			opacity: 0;
+		    		}
+		    		img.is-hidden {
+		    			opacity: 1;
+		    		}
+			    }
 		    }
 		}
 		.top-shows {
 			> h2 {
 				font-size: 16px;
 				font-weight: 700;
-				color: #8a99aa;
+				color: #8999AB;
 				margin-bottom: 13px;
 				text-transform: uppercase;
 			}
@@ -293,19 +421,44 @@ a {
 	}
 
 	@media (max-width: $screen-sm-max) {
+		&:before {
+			display: none;
+		}
 		.nav-mobile { 
 			display: block;
-			@include position(absolute, $top: 0px, $left: 0px);
+			@include position(fixed, $top: 0px, $left: 0px);
 		    z-index: 30;
 
 		    > a { 
 		    	display: block;
 		    	text-decoration: none;
 	    		color: $c-white;
-				padding: 30px 20px;
-	    		> i {
-	    			font-size: 36px;
-	    			color: $c-white;
+				padding: 32px 20px;
+				width: 75px;
+				height: 90px;
+	    		> img {
+	    			width: 35px;
+					@include position(absolute, $top: 27px, $left: 20px);
+					@include transition(all .3s);
+					&.bars-icon {
+
+					}
+					&.close-icon {
+						width: 28px;
+					    top: 25px;
+					    left: 24px;
+					    @include transform(scale(0));
+					}
+	    		}
+	    		&.active {
+	    			> img {
+	    				&.bars-icon {
+					    	@include transform(scale(0));
+	    				}
+	    				&.close-icon {
+					    	@include transform(scale(1));
+	    				}
+	    			}
 	    		}
 		    }
 		}
@@ -346,121 +499,34 @@ a {
 .nav-open {
 	@include transform(translateX(0px) !important);
 }
+
 // =============================================================================
 //
-// Home
+// MAIN CONTENT
 //
 // =============================================================================
 
-// -------------------------
-// Home / work
-// -------------------------
+.main-content {
+	padding-top: 75px;
+	padding-left: 335px;
+	.container {
+		padding-top: 50px;
+		padding-bottom: 50px;
+		width: 805px;
+	}
+	@media (max-width: $screen-sm-max) {
+		padding-left: 0px;
+		.container {
+			width: 100%;
+			padding: 30px 20px; 
+		}
+	}
+}
+
   
 // =============================================================================
 //
 // Footer
 //
 // =============================================================================
-
-// =============================================================================
-//
-// Style Guide
-//
-// =============================================================================
-   
-// =============================================================================
-//
-// Responsive
-//
-// =============================================================================
-
-// -------------------------
-// DESKTOP / 1200px >
-// -------------------------
-       
-@media (min-width: 1200px) {  
-}
-
-// -------------------------
-// DESKTOP / 1500px >
-// -------------------------
-       
-@media (min-width: 1500px) { 
-}
-
-// -------------------------
-// DESKTOP / 1900px >
-// -------------------------
-
-@media (min-width: 1900px) { 
-}
-
-// -------------------------
-// DESKTOP / 2300 >
-// ------------------------- 
-
-@media (min-width: 2300px) { 
-}
-
-// -------------------------
-// DESKTOP / 994px >
-// -------------------------  
-
-@media (min-width: 994px) {  
-}
-
-// -------------------------
-// TABLET / LANDSCAPE
-// -------------------------  
- 
-@media (min-width: 992px) and (max-width: 1197px) { 
-}
-
-// -------------------------
-// TABLET / LANDSCAPE ONLY
-// -------------------------  
   
-@media (min-width: 1024px) and (max-width: 1024px) { 
-}
-
-// -------------------------
-// TABLET / PORTRAIT AND LANDSCAPE
-// -------------------------  
-
-@media (min-width: 669px) and (max-width: 1020px) { 
-}
-
-// -------------------------
-// TABLET / PHONE < 992px
-// -------------------------   
-
-@media (max-width: 992px) {  
-}  
-// -------------------------
-// TABLET / PORTRAIT ONLY
-// -------------------------  
-
-@media (min-width: 760px) and (max-width: 997px) {   
-}
-
-// -------------------------
-// PHONE / LANDSCAPE
-// -------------------------   
-
-@media (min-width: 550px) and (max-width: 757px) { 
-}
-
-// -------------------------
-// PHONE < 667px
-// -------------------------   
-
-@media (max-width: 667px) {  
-}
-
-// -------------------------
-// PHONE < 367px
-// -------------------------   
-
-@media (max-width: 367px) { 
- 
-}
